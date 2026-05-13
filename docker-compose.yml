@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: firetelecom-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      POSTGRES_DB: ${DATABASE_NAME:-firetelecom}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/sql:/docker-entrypoint-initdb.d
+    networks:
+      - firetelecom-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: firetelecom-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - firetelecom-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: firetelecom-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=${DATABASE_NAME:-firetelecom}
+      - DATABASE_USER=${DATABASE_USER:-postgres}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=${JWT_SECRET:-seu-chave-secreta-super-segura}
+      - ASAAS_API_KEY=${ASAAS_API_KEY:-}
+      - EMAIL_TYPE=${EMAIL_TYPE:-smtp}
+      - SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASSWORD=${SMTP_PASSWORD:-}
+      - WHATSAPP_API_URL=${WHATSAPP_API_URL:-http://localhost:8080}
+      - WHATSAPP_API_TOKEN=${WHATSAPP_API_TOKEN:-}
+      - WHATSAPP_NUMERO_ORIGEM=${WHATSAPP_NUMERO_ORIGEM:-5511999999999}
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - firetelecom-network
+    command: ["node", "src/app.js"]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: firetelecom-frontend
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - VITE_API_URL=http://localhost:3000/api
+    depends_on:
+      - backend
+    networks:
+      - firetelecom-network
+    command: ["npm", "run", "build", "&&", "npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "80"]
+
+  workers:
+    build:
+      context: ./workers
+      dockerfile: Dockerfile
+    container_name: firetelecom-workers
+    restart: always
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=${DATABASE_NAME:-firetelecom}
+      - DATABASE_USER=${DATABASE_USER:-postgres}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD:-postgres}
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - firetelecom-network
+    command: ["node", "index.js"]
+
+networks:
+  firetelecom-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

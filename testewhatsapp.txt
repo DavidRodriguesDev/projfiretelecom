@@ -1,0 +1,8 @@
+sudo -u postgres psql -d firetelecom -c "UPDATE boletos SET tentativas_envio_whatsapp = 0 WHERE numero_boleto = 'TEST-001';"
+
+node -e "
+const { defineRelacionamentos } = require('./src/models/index');
+defineRelacionamentos();
+const { verificarPendentesNoInicio } = require('./src/services/agendamentoService');
+verificarPendentesNoInicio().then(() => process.exit(0)).catch(console.error);
+"

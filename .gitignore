@@ -1,0 +1,58 @@
+# dependências
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+workers/node_modules/
+
+# arquivos de ambiente
+.env
+.env.local
+.env.development
+.openclaude
+backend/.env
+frontend/.env
+workers/.env
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# arquivos de build
+dist/
+build/
+frontend/dist/
+backend/dist/
+
+# logs
+*.log
+logs/
+
+# banco de dados
+*.sqlite
+*.db
+sql/*.backup
+sql/backup_*
+
+# tes
+coverage/
+.nyc_output/
+
+# arquivos grandes
+*.pdf
+boletos/
+anexos/
+
+# docker volumes (opcional)
+# docker/volumes/
+
+# arquivos de cache
+.cache/
+npm-cache/
+
+# arquivos temporários
+tmp/
+temp/
+*.tmp
