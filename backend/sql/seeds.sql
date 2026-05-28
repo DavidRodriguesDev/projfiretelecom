@@ -1,6 +1,6 @@
 -- =============================================================================
 -- SEEDS - DADOS INICIAIS PARA TESTE
--- Fire Telecom - Sistema de Gestão de Boleto
+-- Boleto Manager - Sistema de Gestão de Boleto
 -- =============================================================================
 
 -- =============================================================================
@@ -11,7 +11,7 @@
 INSERT INTO usuarios (nome, email, senha, cargo, ativo)
 VALUES (
     'Administrador do Sistema',
-    'admin@firetelecom.com.br',
+    'admin@boleto_manager.com',
     '$2a$10$N3p4qF8V9X2Z3Y4Z5W6X7Y8Z9Z0a1b2c3d4e5f6g7h8i9j0k', -- Exemplo, gerar novo hash
     'ADMINISTRADOR',
     true
@@ -83,7 +83,7 @@ VALUES (
     'smtp.gmail.com',
     587,
     true,
-    'noreply@firetelecom.com.br'
+    'noreply@boleto_manager.com'
 )
 ON CONFLICT (tipo_canal) DO NOTHING;
 

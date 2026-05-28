@@ -1,6 +1,6 @@
-# 🔥 Fire Telecom - Sistema de Gestão de Cobrança
+# Boleto Manager - Sistema de Gestão de Boletos
 
-Sistema web completo para gestão de clientes, geração automatizada de boletos e envio de notificações por e-mail e WhatsApp para provedores de internet.
+Sistema web completo para gestão de cobrança, geração automatizada de boletos e envio de notificações por e-mail e WhatsApp.
 
 ---
 
@@ -8,7 +8,7 @@ Sistema web completo para gestão de clientes, geração automatizada de boletos
 
 | Frontend | Backend | Banco | Cache | WhatsApp |
 |----------|---------|-------|-------|----------|
-| React 18 + TypeScript | Node.js 26 + Fastify 4 | PostgreSQL | Redis | Evolution API v2 |
+| React 18 + TypeScript | Node.js 18 + Fastify 4 | PostgreSQL | Redis | Evolution API v2 |
 
 ---
 
@@ -39,8 +39,8 @@ Sistema web completo para gestão de clientes, geração automatizada de boletos
 ### 1. Banco de dados
 
 ```bash
-psql -U postgres -c "CREATE DATABASE firetelecom;"
-psql -U postgres -d firetelecom -f backend/sql/demo-data.sql
+psql -U postgres -c "CREATE DATABASE boleto_manager;"
+psql -U postgres -d boleto_manager -f backend/sql/demo-data.sql
 ```
 
 ### 2. Backend
@@ -95,7 +95,7 @@ NODE_ENV=development
 # Banco de dados
 DATABASE_HOST=localhost
 DATABASE_PORT=5432
-DATABASE_NAME=firetelecom
+DATABASE_NAME=boleto_manager
 DATABASE_USER=postgres
 DATABASE_PASSWORD=postgres
 
@@ -104,7 +104,7 @@ REDIS_HOST=localhost
 REDIS_PORT=6379
 
 # JWT
-JWT_SECRET=firetelecom-super-segredo-senha-min-32-caracteres
+JWT_SECRET=boleto-manager-super-segredo-senha-min-32-caracteres
 JWT_EXPIRES_IN=7d
 
 # Gmail SMTP
@@ -120,7 +120,7 @@ SMTP_FROM=seu@gmail.com
 WHATSAPP_API_TYPE=evolution
 WHATSAPP_API_URL=http://localhost:8080
 WHATSAPP_API_TOKEN=429683C4C977415CAAFCCE10F7D57E11
-WHATSAPP_INSTANCE=firetelecom
+WHATSAPP_INSTANCE=boleto-manager
 WHATSAPP_NUMERO_ORIGEM=5531999999999
 
 # Agendamentos
@@ -136,7 +136,7 @@ ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
 ## Credenciais Default
 
 ```
-E-mail: admin@firetelecom.com.br
+E-mail: admin@boleto_manager.com
 Senha:  admin123
 ```
 
@@ -145,7 +145,7 @@ Senha:  admin123
 ## Estrutura do Projeto
 
 ```
-projfiretelecom/
+boleto-manager/
 ├── backend/                  # API REST (Fastify)
 │   ├── src/
 │   │   ├── config/           # DB, Redis, JWT

@@ -1,7 +1,7 @@
 {
-  "name": "firetelecom-frontend",
+  "name": "boleto-manager-frontend",
   "version": "1.0.0",
-  "description": "Frontend do sistema de gestão de boletos Fire Telecom",
+  "description": "Frontend do sistema de gestão de boletos - Boleto Manager",
   "type": "module",
   "scripts": {
     "dev": "vite",

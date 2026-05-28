@@ -1,10 +1,10 @@
--- Script SQL para criar e popular o banco de dados Fire Telecom
+-- Script SQL para criar e popular o banco de dados Boleto Manager
 
 -- Criar banco se não existir
--- CREATE DATABASE firetelecom;
+-- CREATE DATABASE boleto_manager;
 
 -- Conectar ao banco
-\c firetelecom
+\c boleto_manager
 
 -- Habilitar extensões
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 INSERT INTO usuarios (nome, email, senha, cargo, ativo)
 VALUES (
     'Administrador Sistema',
-    'admin@firetelecom.com.br',
+    'admin@boleto_manager.com',
     crypt('admin123', gen_salt('bf')),
     'ADMINISTRADOR',
     true

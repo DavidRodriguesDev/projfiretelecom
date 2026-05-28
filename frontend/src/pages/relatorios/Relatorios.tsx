@@ -24,7 +24,7 @@ export default function Relatorios() {
 
       doc.setFontSize(20);
       doc.setTextColor(30, 64, 175);
-      doc.text('Fire Telecom', pageWidth / 2, 20, { align: 'center' });
+      doc.text('Boleto Manager', pageWidth / 2, 20, { align: 'center' });
       doc.setFontSize(12);
       doc.setTextColor(100);
       doc.text('Relatorio Gerencial', pageWidth / 2, 28, { align: 'center' });
@@ -125,7 +125,7 @@ export default function Relatorios() {
         alternateRowStyles: { fillColor: [240, 245, 255] },
       });
 
-      doc.save('relatorio-firetelecom-' + new Date().toISOString().split('T')[0] + '.pdf');
+      doc.save('relatorio-boleto-manager-' + new Date().toISOString().split('T')[0] + '.pdf');
       alert('Relatorio gerado com sucesso!');
     } catch (error: any) {
       alert('Erro ao gerar relatorio: ' + error.message);

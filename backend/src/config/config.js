@@ -16,7 +16,7 @@ const config = {
   database: {
     host: process.env.DATABASE_HOST || 'localhost',
     port: process.env.DATABASE_PORT || 5432,
-    name: process.env.DATABASE_NAME || 'firetelecom',
+    name: process.env.DATABASE_NAME || 'boleto_manager',
     user: process.env.DATABASE_USER || 'postgres',
     password: process.env.DATABASE_PASSWORD || 'postgres',
     dialect: 'postgres',
@@ -55,7 +55,7 @@ const config = {
       user: process.env.SMTP_USER,
       password: process.env.SMTP_PASSWORD,
     },
-    from: process.env.SMTP_FROM || 'noreply@firetelecom.com.br',
+    from: process.env.SMTP_FROM || 'noreply@boleto_manager.com',
   },
 
   // WhatsApp

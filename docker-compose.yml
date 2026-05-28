@@ -3,36 +3,36 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: firetelecom-postgres
+    container_name: boleto-manager-postgres
     restart: always
     environment:
       POSTGRES_USER: ${DATABASE_USER:-postgres}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
-      POSTGRES_DB: ${DATABASE_NAME:-firetelecom}
+      POSTGRES_DB: ${DATABASE_NAME:-boleto_manager}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/sql:/docker-entrypoint-initdb.d
     networks:
-      - firetelecom-network
+      - boleto-manager-network
 
   redis:
     image: redis:7-alpine
-    container_name: firetelecom-redis
+    container_name: boleto-manager-redis
     restart: always
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - firetelecom-network
+      - boleto-manager-network
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: firetelecom-backend
+    container_name: boleto-manager-backend
     restart: always
     ports:
       - "3000:3000"
@@ -40,7 +40,7 @@ services:
       - NODE_ENV=production
       - DATABASE_HOST=postgres
       - DATABASE_PORT=5432
-      - DATABASE_NAME=${DATABASE_NAME:-firetelecom}
+      - DATABASE_NAME=${DATABASE_NAME:-boleto_manager}
       - DATABASE_USER=${DATABASE_USER:-postgres}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - REDIS_HOST=redis
@@ -59,14 +59,14 @@ services:
       - postgres
       - redis
     networks:
-      - firetelecom-network
+      - boleto-manager-network
     command: ["node", "src/app.js"]
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: firetelecom-frontend
+    container_name: boleto-manager-frontend
     restart: always
     ports:
       - "80:80"
@@ -75,32 +75,32 @@ services:
     depends_on:
       - backend
     networks:
-      - firetelecom-network
+      - boleto-manager-network
     command: ["npm", "run", "build", "&&", "npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "80"]
 
   workers:
     build:
       context: ./workers
       dockerfile: Dockerfile
-    container_name: firetelecom-workers
+    container_name: boleto-manager-workers
     restart: always
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - DATABASE_HOST=postgres
       - DATABASE_PORT=5432
-      - DATABASE_NAME=${DATABASE_NAME:-firetelecom}
+      - DATABASE_NAME=${DATABASE_NAME:-boleto_manager}
       - DATABASE_USER=${DATABASE_USER:-postgres}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD:-postgres}
     depends_on:
       - postgres
       - redis
     networks:
-      - firetelecom-network
+      - boleto-manager-network
     command: ["node", "index.js"]
 
 networks:
-  firetelecom-network:
+  boleto-manager-network:
     driver: bridge
 
 volumes:

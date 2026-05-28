@@ -2,9 +2,9 @@
 NUMERO="5533987287901"
 API_URL="http://localhost:8080"
 API_KEY="429683C4C977415CAAFCCE10F7D57E11"
-INSTANCE="firetelecom"
+INSTANCE="boleto-manager"
 
-MENSAGEM="*Fire Telecom*
+MENSAGEM="*Boleto Manager*
 
 Olá, David!
 

@@ -40,7 +40,7 @@ async function sendEmail(options) {
   const transporter = createTransporter();
 
   const mailOptions = {
-    from: `"Fire Telecom" <${config.email.from}>`,
+    from: `"Boleto Manager" <${config.email.from}>`,
     to: options.to,
     subject: options.subject,
     html: options.html,
@@ -68,13 +68,13 @@ function gerarTemplateBoleto(cliente, boleto) {
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>Seu Boleto - Fire Telecom</title>
+      <title>Seu Boleto - Boleto Manager</title>
     </head>
     <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; padding: 20px;">
       <div style="max-width: 600px; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 0 auto;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: #2c3e50; margin: 0;">Fire Telecom</h1>
-          <p style="color: #7f8c8d;">Sua internet, nossa prioridade</p>
+          <h1 style="color: #2c3e50; margin: 0;">Boleto Manager</h1>
+          <p style="color: #7f8c8d;">Gestão simples de cobrança</p>
         </div>
 
         <h2 style="color: #2c3e50;">Olá, ${cliente.nome_completo}!</h2>
@@ -93,8 +93,8 @@ function gerarTemplateBoleto(cliente, boleto) {
 
         <p style="color: #777; font-size: 12px; text-align: center;">
           Se você já realizou o pagamento, por favor descartar este e-mail.<br><br>
-          Fire Telecom - Sua internet, nossa prioridade.<br>
-          Contato: suporte@firetelecom.com.br
+          Boleto Manager - Gestão simples de cobrança.<br>
+          Contato: suporte@boleto_manager.com
         </p>
       </div>
     </body>
@@ -117,13 +117,13 @@ function gerarTemplateLembrete(cliente, boleto, diasAtraso) {
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>Lembrete de Vencimento - Fire Telecom</title>
+      <title>Lembrete de Vencimento - Boleto Manager</title>
     </head>
     <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; padding: 20px;">
       <div style="max-width: 600px; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 0 auto;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: #2c3e50; margin: 0;">Fire Telecom</h1>
-          <p style="color: #7f8c8d;">Sua internet, nossa prioridade</p>
+          <h1 style="color: #2c3e50; margin: 0;">Boleto Manager</h1>
+          <p style="color: #7f8c8d;">Gestão simples de cobrança</p>
         </div>
 
         <h2 style="color: #2c3e50;">Olá, ${cliente.nome_completo}!</h2>
@@ -143,8 +143,8 @@ function gerarTemplateLembrete(cliente, boleto, diasAtraso) {
 
         <p style="color: #777; font-size: 12px; text-align: center;">
           Se você já realizou o pagamento, por favor descartar este e-mail.<br><br>
-          Fire Telecom - Sua internet, nossa prioridade.<br>
-          Contato: suporte@firetelecom.com.br
+          Boleto Manager - Gestão simples de cobrança.<br>
+          Contato: suporte@boleto_manager.com
         </p>
       </div>
     </body>

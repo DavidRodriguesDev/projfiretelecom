@@ -1,7 +1,7 @@
 {
-  "name": "firetelecom-backend",
+  "name": "boleto-manager-backend",
   "version": "1.0.0",
-  "description": "Backend da API REST para sistema de gestão de boletos",
+  "description": "Backend da API REST para gestão de boletos com envio por email e WhatsApp",
   "main": "src/app.js",
   "scripts": {
     "dev": "nodemon src/app.js",
@@ -12,12 +12,14 @@
     "generate:hash": "node scripts/generatePasswordHash.js"
   },
   "keywords": [
-    "firetelecom",
     "boleto",
+    "payment",
+    "email",
+    "whatsapp",
     "backend",
     "fastify"
   ],
-  "author": "Fire Telecom",
+  "author": "Boleto Manager",
   "license": "MIT",
   "dependencies": {
     "@fastify/cors": "^9.0.0",

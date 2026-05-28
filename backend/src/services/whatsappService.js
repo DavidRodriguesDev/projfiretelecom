@@ -1,9 +1,9 @@
 const axios = require('axios');
 const config = require('../config/config');
 
-const INSTANCE = process.env.WHATSAPP_INSTANCE || 'firetelecom3';
+const INSTANCE = process.env.WHATSAPP_INSTANCE || 'boleto-manager3';
 const API_URL = process.env.WHATSAPP_API_URL || 'http://localhost:8080';
-const API_KEY = process.env.WHATSAPP_API_TOKEN || 'firetelecom123';
+const API_KEY = process.env.WHATSAPP_API_TOKEN || 'boleto-manager123';
 
 function getClient() {
   return axios.create({
@@ -24,7 +24,7 @@ async function enviarMensagemWhatsApp(telefone, mensagem) {
 
 async function enviarBoletoWhatsApp(telefone, nomeCliente, linhaDigitavel, valor, urlPdf) {
   const mensagem = [
-    `*Fire Telecom*`,
+    `*Boleto Manager*`,
     ``,
     `Olá, ${nomeCliente}!`,
     ``,
@@ -43,7 +43,7 @@ async function enviarBoletoWhatsApp(telefone, nomeCliente, linhaDigitavel, valor
 
 async function enviarLembreteVencimentoWhatsApp(telefone, nomeCliente, diasAtraso, linhaDigitavel, urlPdf) {
   const mensagem = [
-    `*Fire Telecom*`,
+    `*Boleto Manager*`,
     ``,
     `Olá, ${nomeCliente}!`,
     ``,

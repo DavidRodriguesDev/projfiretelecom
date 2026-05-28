@@ -1,7 +1,7 @@
 {
-  "name": "firetelecom-workers",
+  "name": "boleto-manager-workers",
   "version": "1.0.0",
-  "description": "Workers de processamento assíncrono para Fire Telecom",
+  "description": "Workers de processamento assíncrono para Boleto Manager",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,9 +11,11 @@
   "keywords": [
     "workers",
     "bull",
-    "redis"
+    "redis",
+    "boleto",
+    "payment"
   ],
-  "author": "Fire Telecom",
+  "author": "Boleto Manager",
   "license": "MIT",
   "dependencies": {
     "bull": "^3.22.0",

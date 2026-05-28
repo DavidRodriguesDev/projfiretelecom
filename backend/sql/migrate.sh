@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================================
-# migrate.sh - Script de migração do banco de dados Fire Telecom
+# migrate.sh - Script de migração do banco de dados Boleto Manager
 # =============================================================================
 
 set -e
@@ -8,7 +8,7 @@ set -e
 # Configurações do banco de dados
 DB_HOST="${DB_HOST:-localhost}"
 DB_PORT="${DB_PORT:-5432}"
-DB_NAME="${DB_NAME:-firetelecom}"
+DB_NAME="${DB_NAME:-boleto_manager}"
 DB_USER="${DB_USER:-postgres}"
 DB_PASSWORD="${DB_PASSWORD:-postgres}"
 

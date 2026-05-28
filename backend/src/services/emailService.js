@@ -47,7 +47,7 @@ async function sendEmail(options) {
   const transporter = createTransporter();
 
   const mailOptions = {
-    from: `"Fire Telecom" <${config.email.from}>`,
+    from: `"Boleto Manager" <${config.email.from}>`,
     to,
     subject,
     html,
@@ -80,14 +80,14 @@ async function sendEmail(options) {
  * @param {string} pdfBase64 - PDF do boleto em base64
  */
 async function enviarBoletoEmail(destinatario, nomeCliente, linhaDigitavel, valor, dataVencimento, pdfBase64) {
-  const assunto = `Seu boleto Fire Telecom - Vencimento ${dataVencimento}`;
+  const assunto = `Seu boleto - Boleto Manager - Vencimento ${dataVencimento}`;
 
   const mensagemHtml = `
     <!DOCTYPE html>
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>Seu Boleto - Fire Telecom</title>
+      <title>Seu Boleto - Boleto Manager</title>
       <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; padding: 20px; }
         .container { max-width: 600px; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 0 auto; }
@@ -101,8 +101,8 @@ async function enviarBoletoEmail(destinatario, nomeCliente, linhaDigitavel, valo
     <body>
       <div class="container">
         <div class="header">
-          <h1>Fire Telecom</h1>
-          <p style="color: #7f8c8d;">Sua internet, nossa prioridade</p>
+          <h1>Boleto Manager</h1>
+          <p style="color: #7f8c8d;">Gestão simples de cobrança</p>
         </div>
 
         <h2 style="color: #2c3e50;">Olá, ${nomeCliente}!</h2>
@@ -121,8 +121,8 @@ async function enviarBoletoEmail(destinatario, nomeCliente, linhaDigitavel, valo
 
         <div class="footer">
           <p>Se você já realizou o pagamento, por favor descartar este e-mail.<br><br>
-          Fire Telecom - Sua internet, nossa prioridade.<br>
-          Contato: suporte@firetelecom.com.br</p>
+          Boleto Manager - Gestão simples de cobrança.<br>
+          Contato: suporte@boleto_manager.com</p>
         </div>
       </div>
     </body>
@@ -156,7 +156,7 @@ async function enviarBoletoEmail(destinatario, nomeCliente, linhaDigitavel, valo
  * @param {string} urlPdf - URL para download do PDF
  */
 async function enviarLembreteVencimento(destinatario, nomeCliente, diasAtraso, linhaDigitavel, urlPdf) {
-  const assunto = `Lembrete: Boleto vencendo em breve - Fire Telecom`;
+  const assunto = `Lembrete: Boleto vencendo em breve - Boleto Manager`;
 
   const mensagemDestaque = diasAtraso > 0
     ? `
@@ -173,7 +173,7 @@ async function enviarLembreteVencimento(destinatario, nomeCliente, diasAtraso, l
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>Lembrete de Vencimento - Fire Telecom</title>
+      <title>Lembrete de Vencimento - Boleto Manager</title>
       <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; padding: 20px; }
         .container { max-width: 600px; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 0 auto; }
@@ -185,8 +185,8 @@ async function enviarLembreteVencimento(destinatario, nomeCliente, diasAtraso, l
     <body>
       <div class="container">
         <div class="header">
-          <h1 style="text-align: center; color: #2c3e50;">Fire Telecom</h1>
-          <p style="text-align: center; color: #7f8c8d;">Sua internet, nossa prioridade</p>
+          <h1 style="text-align: center; color: #2c3e50;">Boleto Manager</h1>
+          <p style="text-align: center; color: #7f8c8d;">Gestão simples de cobrança</p>
         </div>
 
         <h2 style="color: #2c3e50;">Olá, ${nomeCliente}!</h2>
@@ -207,8 +207,8 @@ async function enviarLembreteVencimento(destinatario, nomeCliente, diasAtraso, l
 
         <div class="footer">
           <p>Se você já realizou o pagamento, desconsidere esta mensagem.<br><br>
-          Fire Telecom - Sua internet, nossa prioridade.<br>
-          Email: suporte@firetelecom.com.br</p>
+          Boleto Manager - Gestão simples de cobrança.<br>
+          Email: suporte@boleto_manager.com</p>
         </div>
       </div>
     </body>
@@ -230,14 +230,14 @@ async function enviarLembreteVencimento(destinatario, nomeCliente, diasAtraso, l
  * @param {string} dataPagamento - Data do pagamento
  */
 async function enviarConfirmacaoPagamento(destinatario, nomeCliente, valor, dataPagamento) {
-  const assunto = `Confirmação de pagamento - Fire Telecom`;
+  const assunto = `Confirmação de pagamento - Boleto Manager`;
 
   const mensagemHtml = `
     <!DOCTYPE html>
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>Pagamento Confirmado - Fire Telecom</title>
+      <title>Pagamento Confirmado - Boleto Manager</title>
       <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; padding: 20px; }
         .container { max-width: 600px; background: white; border-radius: 8px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 0 auto; }
@@ -249,8 +249,8 @@ async function enviarConfirmacaoPagamento(destinatario, nomeCliente, valor, data
     <body>
       <div class="container">
         <div class="header">
-          <h1 style="text-align: center; color: #2c3e50;">Fire Telecom</h1>
-          <p style="text-align: center; color: #7f8c8d;">Sua internet, nossa prioridade</p>
+          <h1 style="text-align: center; color: #2c3e50;">Boleto Manager</h1>
+          <p style="text-align: center; color: #7f8c8d;">Gestão simples de cobrança</p>
         </div>
 
         <h2 style="color: #27ae60;">Pagamento Confirmado! <span style="color: #333;"> </span></h2>
@@ -266,14 +266,14 @@ async function enviarConfirmacaoPagamento(destinatario, nomeCliente, valor, data
           <p><strong>Data do Pagamento:</strong> ${new Date(dataPagamento).toLocaleDateString('pt-BR')}</p>
         </div>
 
-        <p style="color: #666;">Obrigado por pagar em dia com a Fire Telecom!</p>
+        <p style="color: #666;">Obrigado por pagar em dia com o Boleto Manager!</p>
 
         <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
 
         <div class="footer">
           <p>Se tiver alguma dúvida sobre este pagamento, entre em contato conosco.<br><br>
-          Fire Telecom - Sua internet, nossa prioridade.<br>
-          Contato: suporte@firetelecom.com.br</p>
+          Boleto Manager - Gestão simples de cobrança.<br>
+          Contato: suporte@boleto_manager.com</p>
         </div>
       </div>
     </body>

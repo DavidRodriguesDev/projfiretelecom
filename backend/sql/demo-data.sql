@@ -1,4 +1,4 @@
--- Script SQL para criar e popular o banco de dados Fire Telecom
+-- Script SQL para criar e popular o banco de dados Boleto Manager
 
 -- Criar tabelas se não existirem
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS boletos (
 INSERT INTO usuarios (nome, email, senha, cargo, ativo)
 VALUES (
     'Administrador Sistema',
-    'admin@firetelecom.com.br',
+    'admin@boleto_manager.com',
     crypt('admin123', gen_salt('bf')),
     'ADMINISTRADOR',
     true

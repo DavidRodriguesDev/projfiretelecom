@@ -1,6 +1,6 @@
 -- =============================================================================
 -- SCHEMA DO BANCO DE DADOS - SISTEMA DE GESTÃO DE BOLETOS
--- Provedor de Internet - Fire Telecom
+-- Boleto Manager
 -- =============================================================================
 
 -- =============================================================================
@@ -764,7 +764,7 @@ $$ LANGUAGE plpgsql;
 
 -- Opcional: Revoke permissions padrão e grant only para roles específicas
 -- CREATE ROLE painel_app LOGIN;
--- GRANT CONNECT ON DATABASE firetelecom TO painel_app;
+-- GRANT CONNECT ON DATABASE boleto_manager TO painel_app;
 -- GRANT USAGE ON SCHEMA public TO painel_app;
 -- GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO painel_app;
 -- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO painel_app;
@@ -778,7 +778,7 @@ $$ LANGUAGE plpgsql;
 INSERT INTO usuarios (nome, email, senha, cargo, ativo)
 VALUES (
     'Administrador Sistema',
-    'admin@firetelecom.com.br',
+    'admin@boleto_manager.com',
     '$2a$10$N3p4qF8V9X2Z3Y4Z5W6X7Y8Z9Z0a1b2c3d4e5f6g7h8i9j0k',  -- Exemplo: crypt('admin123', gen_salt('bf'))
     'ADMINISTRADOR',
     true
